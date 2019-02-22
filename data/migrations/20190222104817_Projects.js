@@ -6,7 +6,7 @@ exports.up = (knex, Promise) =>
       .unique()
       .notNullable();
     tbl.text("ProjectDescription").notNullable();
-    tbl.boolean("ProjectIsCompleted").notNullable();
+    tbl.boolean("ProjectIsCompleted").defaultTo(false);
     tbl.timestamps(true, true);
   });
 
