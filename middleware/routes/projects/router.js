@@ -38,4 +38,26 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+
+  console.log(
+    `\nAttempting to GET project with ID [${id}] and associated actions...`
+  );
+  try {
+    const project = await dbHelper.getProject(id);
+    if (project) {
+      res.status(200).json({ success: true, data: project });
+    } else {
+      sendError(res, 404, `Project with ID [${id}] not found.`);
+    }
+  } catch (err) {
+    sendError(res, 500, err.errno || err);
+  } finally {
+    console.log(
+      `GET attempt for project ID [${id}] (and its associated actions) finished.`
+    );
+  }
+});
+
 module.exports = router;

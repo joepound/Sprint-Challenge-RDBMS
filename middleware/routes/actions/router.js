@@ -29,7 +29,6 @@ router.post("/", async (req, res) => {
       const action = await dbHelper.addAction(newAction);
       res.status(201).json({ success: true, data: action });
     } catch (err) {
-      console.log(err);
       sendError(res, 500, err.errno || err);
     } finally {
       console.log("Action POST attempt finished.");
