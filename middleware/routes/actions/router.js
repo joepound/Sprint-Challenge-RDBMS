@@ -43,7 +43,7 @@ router.get("/:id", async (req, res) => {
     `\nAttempting to GET action with ID [${id}] and associated contexts...`
   );
   try {
-    const action = await dbHelper.getAction(id);
+    const action = await dbHelper.getActions(id);
     if (action) {
       res.status(200).json({ success: true, data: action });
     } else {
@@ -55,6 +55,18 @@ router.get("/:id", async (req, res) => {
     console.log(
       `GET attempt for action ID [${id}] (and its associated contexts) finished.`
     );
+  }
+});
+
+router.get("/", async (req, res) => {
+  console.log("\nAttempting to GET all actions...");
+  try {
+    const actions = await dbHelper.getActions();
+    res.status(200).json({ success: true, data: actions });
+  } catch (err) {
+    err => sendError(res, 500, err.errno || err);
+  } finally {
+    console.log("GET all actions attempt finished.");
   }
 });
 

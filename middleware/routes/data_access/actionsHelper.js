@@ -3,7 +3,7 @@ const mappers = require("./mappers");
 
 module.exports = {
   addAction,
-  getAction
+  getActions
 };
 
 async function addAction(action) {
@@ -11,7 +11,7 @@ async function addAction(action) {
   return addedAction[0];
 }
 
-async function getAction(id) {
+async function getActions(id) {
   if (id) {
     const actionWithContexts = await db("Actions")
       .select(
@@ -29,4 +29,5 @@ async function getAction(id) {
       .where({ "Actions.ActionID": id });
     return mappers.contextsToAction(actionWithContexts);
   }
+  return await db("Actions");
 }

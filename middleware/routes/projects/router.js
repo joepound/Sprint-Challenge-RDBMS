@@ -45,7 +45,7 @@ router.get("/:id", async (req, res) => {
     `\nAttempting to GET project with ID [${id}] and associated actions...`
   );
   try {
-    const project = await dbHelper.getProject(id);
+    const project = await dbHelper.getProjects(id);
     if (project) {
       res.status(200).json({ success: true, data: project });
     } else {
@@ -57,6 +57,18 @@ router.get("/:id", async (req, res) => {
     console.log(
       `GET attempt for project ID [${id}] (and its associated actions) finished.`
     );
+  }
+});
+
+router.get("/", async (req, res) => {
+  console.log("\nAttempting to GET all projects...");
+  try {
+    const projects = await dbHelper.getProjects();
+    res.status(200).json({ success: true, data: projects });
+  } catch (err) {
+    err => sendError(res, 500, err.errno || err);
+  } finally {
+    console.log("GET all projects attempt finished.");
   }
 });
 
