@@ -36,4 +36,26 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+
+  console.log(
+    `\nAttempting to GET action with ID [${id}] and associated contexts...`
+  );
+  try {
+    const action = await dbHelper.getAction(id);
+    if (action) {
+      res.status(200).json({ success: true, data: action });
+    } else {
+      sendError(res, 404, `Action with ID [${id}] not found.`);
+    }
+  } catch (err) {
+    sendError(res, 500, err.errno || err);
+  } finally {
+    console.log(
+      `GET attempt for action ID [${id}] (and its associated contexts) finished.`
+    );
+  }
+});
+
 module.exports = router;
