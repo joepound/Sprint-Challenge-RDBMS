@@ -1,13 +1,49 @@
-
-exports.seed = function(knex, Promise) {
+exports.seed = (knex, Promise) =>
   // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
+  knex("ActionDetails")
+    .truncate()
+    .then(() =>
       // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
-      ]);
-    });
-};
+      knex("ActionDetails").insert([
+        {
+          ActionID: 1,
+          ContextID: 1
+        },
+        {
+          ActionID: 1,
+          ContextID: 3
+        },
+        {
+          ActionID: 2,
+          ContextID: 1
+        },
+        {
+          ActionID: 3,
+          ContextID: 1
+        },
+        {
+          ActionID: 2,
+          ContextID: 2
+        },
+        {
+          ActionID: 3,
+          ContextID: 2
+        },
+        {
+          ActionID: 4,
+          ContextID: 4
+        },
+        {
+          ActionID: 5,
+          ContextID: 5
+        },
+        {
+          ActionID: 6,
+          ContextID: 5
+        },
+        {
+          ActionID: 7,
+          ContextID: 5
+        },
+      ])
+    );
