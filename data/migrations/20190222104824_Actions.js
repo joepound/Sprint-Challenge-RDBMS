@@ -10,7 +10,7 @@ exports.up = (knex, Promise) =>
       .onUpdate("CASCADE");
     tbl.string("ActionDescription").notNullable();
     tbl.text("ActionNotes").notNullable();
-    tbl.boolean("ActionIsCompleted").notNullable();
+    tbl.boolean("ActionIsCompleted").defaultTo(false);
     tbl.timestamps(true, true);
   });
 

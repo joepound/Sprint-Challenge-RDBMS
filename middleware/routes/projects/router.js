@@ -6,7 +6,7 @@ const sendError = require("../../errors/errorHandler");
 
 router.post("/", async (req, res) => {
   if (req.body.ProjectID) {
-    return sendError(res, 400, "Editing ID's is not allowed!");
+    return sendError(res, 403, "Editing ID's is not allowed!");
   }
 
   console.log("\nAttempting to POST new project...");
@@ -30,10 +30,10 @@ router.post("/", async (req, res) => {
       if (err.errno === 19) {
         sendError(res, 400, "Project with supplied name already exists.");
       } else {
-        sendError(res, 500, err.errno);
+        sendError(res, 500, err.errno || err);
       }
     } finally {
-      console.log("Dish POST attempt finished.");
+      console.log("Project POST attempt finished.");
     }
   }
 });
