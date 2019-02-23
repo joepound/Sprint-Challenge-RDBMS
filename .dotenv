@@ -1,3 +1,0 @@
-PORT=5000
-DB_ENV="devServer"
-DATABASE_URL="postgres://drikmtkppkdjlg:d861aaa27c40567e80da0c9cc288f7265bc72290fd330675c7aaa10bf36ffb89@ec2-54-83-196-179.compute-1.amazonaws.com:5432/d95sb06fki89m4"
