@@ -1,5 +1,7 @@
 # Sprint Challenge: RDBMS and SQL - Projects & Actions
 
+Server: https://joepound-ls-sprint-adpwa.herokuapp.com/
+
 This challenge allows you to practice the concepts and techniques learned over the past Sprint and apply them in a concrete project. This Sprint explored Adding Data Persistence to Web API's and you were taught the following modules: Introduction to Relational Databases and SQL, Inserting and Modifying Data, Querying Data; Migrations and Seeds and Introduction to Data Modeling. In your challenge for this Sprint, you will demonstrate proficiency by creating an API that pesist data to SQLite3.
 
 ## Instructions
