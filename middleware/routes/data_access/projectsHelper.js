@@ -26,7 +26,7 @@ async function getProjects(id) {
       )
       .join("Actions", { "Projects.ProjectID": "Actions.ProjectID" })
       .where({ "Projects.ProjectID": id });
-    return mappers.actionsToProjects(projectWithActions);
+    return mappers.actionsToProject(projectWithActions);
   }
   return await db("Projects");
 }
