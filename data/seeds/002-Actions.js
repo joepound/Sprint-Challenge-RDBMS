@@ -1,7 +1,7 @@
 exports.seed = (knex, Promise) =>
   // Deletes ALL existing entries
   knex("Actions")
-    .truncate()
+    .then(() => knex.raw('TRUNCATE TABLE "Actions" RESTART IDENTITY CASCADE'))
     .then(() =>
       // Inserts seed entries
       knex("Actions").insert([

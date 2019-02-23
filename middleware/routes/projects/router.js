@@ -48,7 +48,7 @@ router.get("/:id", async (req, res) => {
     const project = await dbHelper.getProjects(id);
     if (project) {
       res.status(200).json({ success: true, data: project });
-    } else {
+    } else {  
       sendError(res, 404, `Project with ID [${id}] not found.`);
     }
   } catch (err) {
