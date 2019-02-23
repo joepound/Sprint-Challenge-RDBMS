@@ -3,7 +3,7 @@ const mappers = require("./mappers");
 
 module.exports = {
   addProject,
-  getProject
+  getProjects
 };
 
 async function addProject(project) {
@@ -11,7 +11,7 @@ async function addProject(project) {
   return addedProject[0];
 }
 
-async function getProject(id) {
+async function getProjects(id) {
   if (id) {
     const projectWithActions = await db("Projects")
       .select(
@@ -28,4 +28,5 @@ async function getProject(id) {
       .where({ "Projects.ProjectID": id });
     return mappers.actionsToProjects(projectWithActions);
   }
+  return await db("Projects");
 }
